@@ -1,0 +1,5 @@
+databaseChangeLog:
+  - include:
+      file: db/changelog/0.0.1/changes/0.1-create_table_purchases.sql
+  - include:
+      file: db/changelog/0.0.1/changes/0.2-create_table_purchase_carts.sql
