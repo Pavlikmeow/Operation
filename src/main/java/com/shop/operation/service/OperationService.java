@@ -17,12 +17,13 @@ public class OperationService {
         final BigDecimal[] totalPrice = {new BigDecimal(0)};
         var purchaseCartList = purchase.getPurchaseCart();
         purchaseCartList.forEach(purchaseCart -> {
-            totalPrice[0] = totalPrice[0].add(purchaseCart.
-                    getPrice().
-                    multiply(
-                            new BigDecimal(purchaseCart.getQuantity())
-                    )
-            );
+            BigDecimal price = purchaseCart.getPrice();
+            if (price != null) {
+                totalPrice[0] = totalPrice[0]
+                        .add(price.multiply(new BigDecimal(purchaseCart.getQuantity())));
+            } else {
+                throw new RuntimeException(String.format("Price for purchaseCart with id : {%s} is null", purchaseCart.getId()));
+            }
         });
         return totalPrice[0];
     }
