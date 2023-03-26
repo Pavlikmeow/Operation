@@ -12,4 +12,7 @@ public interface UserClient {
 
     @PostMapping("/purchase/{id}/{value}")
     void purchase(@PathVariable UUID id, @PathVariable BigDecimal value);
+
+    @PostMapping("/refund/{id}/{value}")
+    void refund(@PathVariable UUID id, @PathVariable BigDecimal value);
 }

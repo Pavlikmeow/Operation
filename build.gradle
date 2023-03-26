@@ -23,14 +23,29 @@ ext {
 }
 
 dependencies {
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
-	implementation 'org.liquibase:liquibase-core'
+
+	//openfeign
 	implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
+
+	//lombok
 	compileOnly 'org.projectlombok:lombok'
-	runtimeOnly 'org.postgresql:postgresql'
 	annotationProcessor 'org.projectlombok:lombok'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+	//postgresql
+	runtimeOnly 'org.postgresql:postgresql'
+	//liquibase
+	implementation 'org.liquibase:liquibase-core'
+
+	//mapstruct
+	implementation group: 'org.mapstruct', name: 'mapstruct', version: '1.4.2.Final'
+	annotationProcessor("org.mapstruct:mapstruct-processor:1.4.2.Final")
+
+	//bootstrap
+	implementation 'org.springframework.cloud:spring-cloud-starter-bootstrap:3.0.4'
+	implementation 'org.springframework.cloud:spring-cloud-starter-config:3.0.5'
 }
 
 dependencyManagement {
